@@ -49,14 +49,16 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
 
 
         private static List<Reference> rList;
+        private static int id;
 
         static ReferenceController()
         {
+            id = 0;
             rList = new List<Reference>();
 
-            Reference reference1 = new Reference("Laser målling", "lorum ipsum er en god tekst fylder", "https://www.limfjordupdate.dk/wp-content/uploads/smiley-glad.jpg");
-            Reference reference2 = new Reference("De bedste praktikanter i verden", "vi er de bedste praktikanter man nogensunde kunne ønske sig", "https://www.limfjordupdate.dk/wp-content/uploads/smiley-glad.jpg");
-            Reference reference3 = new Reference("CloudPro", "Cloudpro er det bedste sted at være praktikant", "https://www.limfjordupdate.dk/wp-content/uploads/smiley-glad.jpg");
+            Reference reference1 = new Reference("Laser målling", "lorum ipsum er en god tekst fylder", "https://www.limfjordupdate.dk/wp-content/uploads/smiley-glad.jpg", id++);
+            Reference reference2 = new Reference("De bedste praktikanter i verden", "vi er de bedste praktikanter man nogensunde kunne ønske sig", "https://www.limfjordupdate.dk/wp-content/uploads/smiley-glad.jpg", id++);
+            Reference reference3 = new Reference("CloudPro", "Cloudpro er det bedste sted at være praktikant", "https://www.limfjordupdate.dk/wp-content/uploads/smiley-glad.jpg", id++);
 
             rList.Add(reference1);
             rList.Add(reference2);
@@ -83,7 +85,7 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
         public Reference InsertCustomer([FromBody] Reference reference)
         {
             Reference r = reference;
-            r.ID = Reference.nextid;
+            r.ID = id++;
             rList.Add(reference);
             return reference;
         }

@@ -13,12 +13,11 @@ namespace WebsiteCloudProBackOfficeApi.Models
         public string ImagePath { get; set; }
         public Reference()
         {
-            ID = nextid++;
         }
 
-        public Reference(string header, string description, string imagepath)
+        public Reference(string header, string description, string imagepath, int id)
         {
-            ID = nextid++;
+            ID = id;
             Header = header;
             Description = description;
             ImagePath = imagepath;
