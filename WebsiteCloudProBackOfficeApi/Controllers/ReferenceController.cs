@@ -101,6 +101,5 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
 
             return reference;
         }
-
     }
 }
