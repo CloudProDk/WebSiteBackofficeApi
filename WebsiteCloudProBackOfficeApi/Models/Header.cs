@@ -16,7 +16,7 @@ namespace WebsiteCloudProBackOfficeApi.Models
             ID = nextid++;
         }
 
-        public Header(string titel, string description)
+        public Header(string titel, string description, int ID)
         {
             ID = nextid++;
             Titel = titel;
