@@ -19,7 +19,7 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
         }
 
         // GET: api/Headline/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "Get3")]
         public string Get(int id)
         {
             return "value";
