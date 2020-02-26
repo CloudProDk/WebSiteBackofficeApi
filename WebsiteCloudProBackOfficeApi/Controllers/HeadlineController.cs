@@ -53,7 +53,7 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
 
 
         //Put: api/Header/Put
-        public Header Putr(int id, [FromBody] Header header)
+        public Header Put(int id, [FromBody] Header header)
         {
             var item = hList.SingleOrDefault(h => h.ID == id);
             hList.Remove(item);
