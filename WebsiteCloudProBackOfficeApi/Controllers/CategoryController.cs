@@ -63,20 +63,27 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
 
         // POST: api/Category
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Category catObject)
         {
+            listOfCategories.Add(catObject);
         }
 
         // PUT: api/Category/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Category catObject)
         {
+            var objectFromList = listOfCategories.SingleOrDefault(x => x.ID == id);
+            catObject.ID = objectFromList.ID;
+            listOfCategories.Remove(objectFromList);
+            listOfCategories.Add(catObject);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var objectFromList = listOfCategories.SingleOrDefault(x => x.ID == id);
+            listOfCategories.Remove(objectFromList);
         }
     }
 }
