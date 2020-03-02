@@ -33,7 +33,9 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
 
         // GET: api/Headline/5
         [HttpGet("{id}", Name = "Get3")]
+
         public Header Get(int id)
+        
         {
             var item = hList.SingleOrDefault(r => r.ID == id);
             return item;

@@ -17,7 +17,7 @@ namespace WebsiteCloudProBackOfficeApi.Models
 
         public string ImagePath { get; set; }
 
-        public Category(string titel, string description, string imagepath)
+        public Category(string imagepath, string titel, string description)
         {
             ID = nextid++;
             Titel = titel;
