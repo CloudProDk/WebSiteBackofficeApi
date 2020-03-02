@@ -32,7 +32,7 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
         }
 
         // GET: api/Header/Get
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "Get3")]
         public Header Get(int id)
         {
             var item = hList.SingleOrDefault(r => r.ID == id);

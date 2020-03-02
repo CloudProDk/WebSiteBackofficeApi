@@ -19,7 +19,7 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
         }
 
         // GET: api/Category/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "Get1")]
         public string Get(int id)
         {
             return "value";
