@@ -4,43 +4,65 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebsiteCloudProBackOfficeApi.Models;
 
 namespace WebsiteCloudProBackOfficeApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HeadlineController : ControllerBase
-    {
+    public class HeadlineController : ControllerBase {
+        private static List<Header> hList;
+        private static int id;
+
+
+        static HeadlineController()
+        {
+            id = 0;
+            hList = new List<Header>();
+
+            Header header1 = new Header("Innovative digitale løsninger", "Cloud, Web og Mobil, samt al den IT hjælp du behøver.", id++);
+
+            hList.Add(header1);
+        }
         // GET: api/Headline
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<Header> Get()
         {
-            return new string[] { "value1", "value2" };
+            return hList;
         }
 
         // GET: api/Headline/5
         [HttpGet("{id}", Name = "Get3")]
-        public string Get(int id)
+
+        public Header Get(int id)
+        
         {
-            return "value";
+            var item = hList.SingleOrDefault(r => r.ID == id);
+            return item;
         }
 
-        // POST: api/Headline
+
+        //POST: api/Headline
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Header InsertText([FromBody] Header header
+            )
         {
+            Header h = header;
+            h.ID = id++;
+            hList.Add(header);
+            return header;
         }
 
-        // PUT: api/Headline/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+
+        //Put: api/Headline/5
+        public Header Put(int id, [FromBody] Header header)
         {
+            var item = hList.SingleOrDefault(h => h.ID == id);
+            hList.Remove(item);
+            hList.Add(header);
+
+            return header;
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
