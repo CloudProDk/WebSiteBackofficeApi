@@ -24,14 +24,14 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
 
             hList.Add(header1);
         }
-        // GET: api/Header/Get
+        // GET: api/Headline
         [HttpGet]
         public List<Header> Get()
         {
             return hList;
         }
 
-        // GET: api/Header/Get
+        // GET: api/Headline/5
         [HttpGet("{id}", Name = "Get3")]
         public Header Get(int id)
         {
@@ -40,7 +40,7 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
         }
 
 
-        //POST: api/Header/Set
+        //POST: api/Headline
         [HttpPost]
         public Header InsertText([FromBody] Header header
             )
@@ -52,7 +52,7 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
         }
 
 
-        //Put: api/Header/Put
+        //Put: api/Headline/5
         public Header Put(int id, [FromBody] Header header)
         {
             var item = hList.SingleOrDefault(h => h.ID == id);
