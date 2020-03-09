@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 
 namespace WebsiteCloudProBackOfficeApi.Models
 {
-    public class Header {
+    public class Headline {
 
         public static int nextid = 0;
         public int ID { get; set; }
         public string Titel { get; set; }
         public string Description { get; set; }
-        public Header()
+        public Headline()
         {
             ID = nextid++;
         }
 
-        public Header(string titel, string description, int ID)
+        public Headline(string titel, string description, int ID)
         {
             ID = nextid++;
             Titel = titel;
