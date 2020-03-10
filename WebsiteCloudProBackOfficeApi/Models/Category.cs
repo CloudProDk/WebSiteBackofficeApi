@@ -11,17 +11,17 @@ namespace WebsiteCloudProBackOfficeApi.Models
 
         public int ID { get; set; }
 
-        public string Titel { get; set; }
+        public string Title { get; set; }
 
-        public string Description { get; set; }
+        public string Descriptions { get; set; }
 
         public string ImagePath { get; set; }
 
-        public Category(string imagepath, string titel, string description)
+        public Category(string imagepath, string title, string descriptions)
         {
             ID = nextid++;
-            Titel = titel;
-            Description = description;
+            Title = title;
+            Descriptions = descriptions;
             ImagePath = imagepath;
         }
 

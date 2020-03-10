@@ -27,8 +27,8 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
             Category category = new Category
             {
                 ID = id,
-                Titel = title,
-                Description = descriptions,
+                Title = title,
+                Descriptions = descriptions,
                 ImagePath = imagePath
                 
             };
@@ -114,8 +114,8 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
                 databaseConnection.Open();
                 using (SqlCommand insertCommand = new SqlCommand(postString, databaseConnection))
                 {
-                    insertCommand.Parameters.AddWithValue("@Title", catObject.Titel);
-                    insertCommand.Parameters.AddWithValue("@Desc", catObject.Description);
+                    insertCommand.Parameters.AddWithValue("@Title", catObject.Title);
+                    insertCommand.Parameters.AddWithValue("@Desc", catObject.Descriptions);
                     insertCommand.Parameters.AddWithValue("@ImagePath", catObject.ImagePath);
 
 
@@ -137,7 +137,7 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
             //listOfCategories.Remove(objectFromList);
             //listOfCategories.Add(catObject);
 
-            string updateString = $"UPDATE Category SET title = '{catObject.Titel}', descriptions = '{catObject.Description}' WHERE categoryId = '{id}'";
+            string updateString = $"UPDATE Category SET title = '{catObject.Title}', descriptions = '{catObject.Descriptions}' WHERE categoryId = '{id}'";
             using (SqlConnection databaseConnection = new SqlConnection(connectionString))
             {
                 databaseConnection.Open();
