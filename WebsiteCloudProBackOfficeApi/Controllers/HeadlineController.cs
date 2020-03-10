@@ -39,8 +39,8 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
             Headline headline = new Headline
             {
                 ID = id,
-                Titel = title,
-                Description = descriptions
+                Title = title,
+                Descriptions = descriptions
 
             };
             return headline;
@@ -120,8 +120,8 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
                 databaseConnection.Open();
                 using (SqlCommand insertCommand = new SqlCommand(postString, databaseConnection))
                 {
-                    insertCommand.Parameters.AddWithValue("@Header", headline.Titel);
-                    insertCommand.Parameters.AddWithValue("@Desc", headline.Description);
+                    insertCommand.Parameters.AddWithValue("@Header", headline.Title);
+                    insertCommand.Parameters.AddWithValue("@Desc", headline.Descriptions);
 
 
                     int rowsAffected = insertCommand.ExecuteNonQuery();
@@ -141,7 +141,7 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
 
             //return header;
 
-            string updateString = $"UPDATE Headline SET title = '{headline.Titel}', descriptions = '{headline.Description}' WHERE headlineId = '{id}'";
+            string updateString = $"UPDATE Headline SET title = '{headline.Title}', descriptions = '{headline.Descriptions}' WHERE headlineId = '{id}'";
             using (SqlConnection databaseConnection = new SqlConnection(connectionString))
             {
                 databaseConnection.Open();

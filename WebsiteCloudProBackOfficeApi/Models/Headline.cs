@@ -9,18 +9,18 @@ namespace WebsiteCloudProBackOfficeApi.Models
 
         public static int nextid = 0;
         public int ID { get; set; }
-        public string Titel { get; set; }
-        public string Description { get; set; }
+        public string Title { get; set; }
+        public string Descriptions { get; set; }
         public Headline()
         {
             ID = nextid++;
         }
 
-        public Headline(string titel, string description, int ID)
+        public Headline(string title, string descriptions, int ID)
         {
             ID = nextid++;
-            Titel = titel;
-            Description = description;
+            Title = title;
+            Descriptions = descriptions;
         }
     }
 }

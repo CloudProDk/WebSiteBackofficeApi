@@ -11,15 +11,16 @@ namespace WebsiteCloudProBackOfficeApi.Models
 
         public int ID { get; set; }
 
-        public string Titel { get; set; }
+        public string Title { get; set; }
 
-        public string Description { get; set; }
+        public string Descriptions { get; set; }
+        public int FKCategoryId { get; set; }
 
-        public SubCategory(string titel, string description)
+        public SubCategory(string title, string descriptions, int fkCategory)
         {
-            ID = nextid++;
-            Titel = titel;
-            Description = description;
+            Title = title;
+            Descriptions = descriptions;
+            FKCategoryId = fkCategory;
         }
 
         public SubCategory()

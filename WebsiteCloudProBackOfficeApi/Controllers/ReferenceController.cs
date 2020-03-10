@@ -72,18 +72,19 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
         private static Reference readReferenceFromDB(IDataRecord reader)
         {
             int id = reader.GetInt32(0);
-            string hdr = reader.GetString(1);
+            string title = reader.GetString(1);
             string descriptions = reader.GetString(2);
             string imagePath = reader.GetString(3);
+            int fkSubCategoryId = reader.GetInt32(4);
 
 
             Reference reference = new Reference
             {
                 ID = id,
-                Header = hdr,
-                Description = descriptions,
-                ImagePath = imagePath
-
+                Title = title,
+                Descriptions = descriptions,
+                ImagePath = imagePath,
+                FKSubCategoryId = fkSubCategoryId
             };
             return reference;
         }
@@ -152,15 +153,16 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
             //rList.Add(reference);
             //return reference;
 
-            const string postString = "INSERT INTO Reference (title, descriptions, imagePath) VALUES (@Header, @Desc, @ImagePath)";
+            const string postString = "INSERT INTO Reference (title, descriptions, imagePath, fkSubCategoryId) VALUES (@Title, @Desc, @ImagePath, @FKsubCategoryId)";
             using (SqlConnection databaseConnection = new SqlConnection(connectionString))
             {
                 databaseConnection.Open();
                 using (SqlCommand insertCommand = new SqlCommand(postString, databaseConnection))
                 {
-                    insertCommand.Parameters.AddWithValue("@Header", reference.Header);
-                    insertCommand.Parameters.AddWithValue("@Desc", reference.Description);
+                    insertCommand.Parameters.AddWithValue("@Title", reference.Title);
+                    insertCommand.Parameters.AddWithValue("@Desc", reference.Descriptions);
                     insertCommand.Parameters.AddWithValue("@ImagePath", reference.ImagePath);
+                    insertCommand.Parameters.AddWithValue("@FKsubCategoryId", reference.FKSubCategoryId);
 
 
                     int rowsAffected = insertCommand.ExecuteNonQuery();
@@ -182,7 +184,7 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
 
             //return reference;
 
-            string updateString = $"UPDATE Reference SET title = '{reference.Header}', descriptions = '{reference.Description}' WHERE categoryId = '{id}'";
+            string updateString = $"UPDATE Reference SET title = '{reference.Title}', descriptions = '{reference.Descriptions}' WHERE referenceId = '{id}'";
             using (SqlConnection databaseConnection = new SqlConnection(connectionString))
             {
                 databaseConnection.Open();

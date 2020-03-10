@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using WebsiteCloudProBackOfficeApi.Models;
 
 namespace WebsiteCloudProBackOfficeApi.Controllers
@@ -22,13 +24,15 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
             int id = reader.GetInt32(0);
             string title = reader.GetString(1);
             string descriptions = reader.GetString(2);
+            int fkCategoryId = reader.GetInt32(3);
 
 
             SubCategory subCategory = new SubCategory
             {
                 ID = id,
-                Titel = title,
-                Description = descriptions
+                Title = title,
+                Descriptions = descriptions,
+                FKCategoryId = fkCategoryId
 
             };
             return subCategory;
@@ -99,14 +103,16 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
         {
             //listOfSubCategories.Add(subCatObject);
 
-            const string postString = "INSERT INTO SubCategory (title, descriptions) VALUES (@Title, @Desc)";
+            string postString = $"INSERT INTO subCategory (title, descriptions, fkCategoryId) VALUES (@Title, @Desc, @fk)";
             using (SqlConnection databaseConnection = new SqlConnection(connectionString))
             {
                 databaseConnection.Open();
                 using (SqlCommand insertCommand = new SqlCommand(postString, databaseConnection))
                 {
-                    insertCommand.Parameters.AddWithValue("@Title", subCatObject.Titel);
-                    insertCommand.Parameters.AddWithValue("@Desc", subCatObject.Description);
+
+                    insertCommand.Parameters.AddWithValue("@Title", subCatObject.Title);
+                    insertCommand.Parameters.AddWithValue("@Desc", subCatObject.Descriptions);
+                    insertCommand.Parameters.AddWithValue("@fk", subCatObject.FKCategoryId);
 
 
                     int rowsAffected = insertCommand.ExecuteNonQuery();
@@ -125,7 +131,7 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
             //listOfSubCategories.Remove(objectFromList);
             //listOfSubCategories.Add(subCatObject);
 
-            string updateString = $"UPDATE SubCategory SET title = '{subCatObject.Titel}', descriptions = '{subCatObject.Description}' WHERE subCategoryId = '{id}'";
+            string updateString = $"UPDATE SubCategory SET title = '{subCatObject.Title}', descriptions = '{subCatObject.Descriptions}' WHERE subCategoryId = '{id}'";
             using (SqlConnection databaseConnection = new SqlConnection(connectionString))
             {
                 databaseConnection.Open();

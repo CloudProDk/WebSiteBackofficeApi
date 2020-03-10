@@ -8,19 +8,20 @@ namespace WebsiteCloudProBackOfficeApi.Models
     public class Reference{
         public static int nextid = 0;
         public int ID { get; set; }
-        public string Header { get; set; }
-        public string Description { get; set; }
+        public string Title { get; set; }
+        public string Descriptions { get; set; }
         public string ImagePath { get; set; }
+        public int FKSubCategoryId { get; set; }
         public Reference()
         {
         }
 
-        public Reference(string header, string description, string imagepath, int id)
+        public Reference(string title, string descriptions, string imagepath, int fkSubCategoryId)
         {
-            ID = id;
-            Header = header;
-            Description = description;
+            Title = title;
+            Descriptions = descriptions;
             ImagePath = imagepath;
+            FKSubCategoryId = fkSubCategoryId;
         }
     }
   }
