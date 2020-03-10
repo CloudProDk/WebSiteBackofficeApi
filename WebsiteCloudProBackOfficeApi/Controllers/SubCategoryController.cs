@@ -131,7 +131,7 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
             //listOfSubCategories.Remove(objectFromList);
             //listOfSubCategories.Add(subCatObject);
 
-            string updateString = $"UPDATE SubCategory SET title = '{subCatObject.Title}', descriptions = '{subCatObject.Descriptions}' WHERE subCategoryId = '{id}'";
+            string updateString = $"UPDATE SubCategory SET title = '{subCatObject.Title}', descriptions = '{subCatObject.Descriptions}', fkCategoryId = '{subCatObject.FKCategoryId}' WHERE subCategoryId = '{id}'";
             using (SqlConnection databaseConnection = new SqlConnection(connectionString))
             {
                 databaseConnection.Open();
