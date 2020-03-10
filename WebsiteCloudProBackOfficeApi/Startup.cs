@@ -42,6 +42,9 @@ namespace WebsiteCloudProBackOfficeApi
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseCors(
+                options => {options.AllowAnyOrigin().AllowAnyMethod();
+            });
         }
     }
 }
