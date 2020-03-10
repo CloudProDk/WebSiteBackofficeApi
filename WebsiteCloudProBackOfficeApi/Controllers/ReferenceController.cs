@@ -184,7 +184,7 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
 
             //return reference;
 
-            string updateString = $"UPDATE Reference SET title = '{reference.Title}', descriptions = '{reference.Descriptions}' WHERE referenceId = '{id}'";
+            string updateString = $"UPDATE Reference SET title = '{reference.Title}', descriptions = '{reference.Descriptions}', fkSubCategoryId = '{reference.FKSubCategoryId}' WHERE referenceId = '{id}'";
             using (SqlConnection databaseConnection = new SqlConnection(connectionString))
             {
                 databaseConnection.Open();

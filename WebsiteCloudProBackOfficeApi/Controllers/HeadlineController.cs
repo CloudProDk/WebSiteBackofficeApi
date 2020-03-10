@@ -133,6 +133,7 @@ namespace WebsiteCloudProBackOfficeApi.Controllers
 
 
         //Put: api/Headline/5
+        [HttpPut("{id}")]
         public int Put(int id, [FromBody] Headline headline)
         {
             //var item = hList.SingleOrDefault(h => h.ID == id);
